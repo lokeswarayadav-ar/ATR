@@ -134,16 +134,16 @@ You can perform RAG purely from within the database using SQL or use a python sc
     |-----------------------|
     |   I see that you're experiencing issues with ARM not listing the results from a CodeScan scan. This can be frustrating!
 
-To troubleshoot this issue, I'd like to walk you through some potential solutions:
+        To troubleshoot this issue, I'd like to walk you through some potential solutions:
 
-1. **Check the CodeScan report**: Make sure that the CodeScan report was generated successfully and contains the expected results. You can check this by logging into your CodeScan account and reviewing the report.
-2. **Verify ARM settings**: Double-check your ARM settings, especially the SCA tool configuration. Ensure that you've selected CodeScan as the SCA tool and that the baseline branch is correctly set.
-3. **Check for missing or incorrect dependencies**: Sometimes, a scan might fail due to missing or incorrect dependencies in your project. Review your project's dependencies and ensure they are correct and up-to-date.
-4. **Re-run the scan**: Try re-running the CodeScan scan from within ARM to see if that resolves the issue.
+        1. **Check the CodeScan report**: Make sure that the CodeScan report was generated successfully and contains the expected results. You can check this by logging into your CodeScan                 account and reviewing the report.
+        2. **Verify ARM settings**: Double-check your ARM settings, especially the SCA tool configuration. Ensure that you've selected CodeScan as the SCA tool and that the baseline branch is             correctly set.
+        3. **Check for missing or incorrect dependencies**: Sometimes, a scan might fail due to missing or incorrect dependencies in your project. Review your project's dependencies and ensure             they are correct and up-to-date.
+        4. **Re-run the scan**: Try re-running the CodeScan scan from within ARM to see if that resolves the issue.
 
-If none of these solutions work, you may want to consider reaching out to the CodeScan support team or searching for more specific troubleshooting guides related to your issue.
+        If none of these solutions work, you may want to consider reaching out to the CodeScan support team or searching for more specific troubleshooting guides related to your issue.
 
-Remember, it's always a good idea to have multiple avenues of approach when troubleshooting issues like this!|
+        Remember, it's always a good idea to have multiple avenues of approach when troubleshooting issues like this!|
 
 
 
