@@ -31,7 +31,7 @@
     
 1. **Create a table with the data you want to embed from a huggingface dataset**
 
-    We'll create a table named `wiki` from a few rows of the english-language `wikimedia/wikipedia` dataset.
+    We'll create a table named `kb` from and load dataset knowledgebase from resources by running import API.
     
     First, we'll create the table:
 
