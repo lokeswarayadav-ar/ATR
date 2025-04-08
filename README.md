@@ -131,8 +131,8 @@ You can perform RAG purely from within the database using SQL or use a python sc
     ```
 
     | response |
-    |-----------------------|
-    |   I see that you're experiencing issues with ARM not listing the results from a CodeScan scan. This can be frustrating!
+
+        I see that you're experiencing issues with ARM not listing the results from a CodeScan scan. This can be frustrating!
 
         To troubleshoot this issue, I'd like to walk you through some potential solutions:
 
@@ -143,7 +143,7 @@ You can perform RAG purely from within the database using SQL or use a python sc
 
         If none of these solutions work, you may want to consider reaching out to the CodeScan support team or searching for more specific troubleshooting guides related to your issue.
 
-        Remember, it's always a good idea to have multiple avenues of approach when troubleshooting issues like this!|
+        Remember, it's always a good idea to have multiple avenues of approach when troubleshooting issues like this!
 
 
 
