@@ -82,10 +82,7 @@ In this section, we'll have the LLM answer questions about pgai based on the wik
 You can perform RAG purely from within the database using SQL or use a python script to interact with the database and perform RAG. We often find that using SQL is easier to create a quick prototype and get started but as the project matures people easily switch to using Python to have more control and make use of Python tooling. 
 
 
-<details>
-<summary>Click to perform RAG within SQL</summary>
-
- 1. **Define a function to perform RAG**
+1. **Define a function to perform RAG**
  
     We'll create a function that uses RAG to allow an LLM to answer questions about pgai based on the wiki entry we added.
 
@@ -99,42 +96,39 @@ You can perform RAG purely from within the database using SQL or use a python sc
     DECLARE
        context_chunks TEXT;
        response TEXT;
-  BEGIN
-     -- Perform similarity search to find relevant blog posts
-     SELECT string_agg(embedding_uuid || ': ' || chunk, E'\n') INTO context_chunks
-     FROM
-     (
-       SELECT embedding_uuid, chunk
-       FROM kb_embedding_store
-       ORDER BY embedding <=> ai.ollama_embed('all-minilm', query_text)
-       LIMIT 3
-     ) AS relevant_posts;
+      BEGIN
+         -- Perform similarity search to find relevant blog posts
+         SELECT string_agg(embedding_uuid || ': ' || chunk, E'\n') INTO context_chunks
+         FROM
+         (
+           SELECT embedding_uuid, chunk
+           FROM kb_embedding_store
+           ORDER BY embedding <=> ai.ollama_embed('all-minilm', query_text)
+           LIMIT 3
+         ) AS relevant_posts;
 
-     -- Generate a summary using llama3
-     SELECT ai.ollama_chat_complete
-     ( 'llama3'
-     , jsonb_build_array
-      ( jsonb_build_object('role', 'system', 'content', 'you are a helpful assistant')
-     , jsonb_build_object
-       ('role', 'user'
-       , 'content', query_text || E'\nUse the following context to respond.\n' || context_chunks
-       )
-     )
-   )->'message'->>'content' INTO response;
+         -- Generate a summary using llama3
+         SELECT ai.ollama_chat_complete
+         ( 'llama3'
+         , jsonb_build_array
+           ( jsonb_build_object('role', 'system', 'content', 'you are a helpful assistant')
+         , jsonb_build_object
+           ('role', 'user'
+           , 'content', query_text || E'\nUse the following context to respond.\n' || context_chunks
+           )
+         )
+        )->'message'->>'content' INTO response;
 
-   RETURN response;
-  END;
-$$ LANGUAGE plpgsql;
+       RETURN response;
+      END;
+    $$ LANGUAGE plpgsql;
     ```
 
 1. **Use the RAG function to answer questions about the wiki data**
 
     ```sql
-    SELECT generate_rag_response('Issues are not listing in ARM after running SCA to codescan');
+    SELECT generate_rag_response('Issues are not listing in ARM after running SCA to codescan') as response;
     ```
-
-    <details>
-    <summary>Click here to see the output</summary>
 
     | response |
     |-----------------------|
@@ -150,7 +144,7 @@ To troubleshoot this issue, I'd like to walk you through some potential solution
 If none of these solutions work, you may want to consider reaching out to the CodeScan support team or searching for more specific troubleshooting guides related to your issue.
 
 Remember, it's always a good idea to have multiple avenues of approach when troubleshooting issues like this!|
-    </details>
 
-</details>
+
+
 
